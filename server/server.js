@@ -23,6 +23,15 @@ app.post('/todos', (req, res) => {
     });
 });
 
+// GET ROUTE
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos) => {
+        res.send({todos}            // bolje poslati objekat nego niz, jer mozemo da dodamo neke nove propertye koji su nam potrebani
+    );}, (e) => {
+        res.status(400).send(e);
+    })
+});
+
 app.listen(3000, () => {
     console.log('Started on port 3000');
 });
