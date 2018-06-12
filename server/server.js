@@ -11,10 +11,6 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());  // app.use() is taking a middleware
 
-app.get('/', (req, res) => {
-    res.json('Initial page');
-})
-
 // POST ROUTE
 app.post('/todos', (req, res) => {
     var todo = new Todo({
@@ -32,8 +28,7 @@ app.post('/todos', (req, res) => {
 // GET ROUTE
 app.get('/todos', (req, res) => {
     Todo.find().then((todos) => {
-        res.send({ todos }            // bolje poslati objekat nego niz, jer mozemo da dodamo neke nove propertye koji su nam potrebani
-        );
+        res.send({ todos })            // bolje poslati objekat nego niz, jer mozemo da dodamo neke nove propertye koji su nam potrebani
     }, (e) => {
         res.status(400).send(e);
     })
