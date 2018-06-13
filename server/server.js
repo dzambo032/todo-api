@@ -28,11 +28,12 @@ app.post('/todos', (req, res) => {
 
 // GET ROUTE
 app.get('/todos', (req, res) => {
-    Todo.find().then((todos) => {
+    /* Todo.find().then((todos) => {
         res.send({ todos })            // bolje poslati objekat nego niz, jer mozemo da dodamo neke nove propertye koji su nam potrebani
     }, (e) => {
         res.status(400).send(e);
-    })
+    }) */
+    res.send('Srecno na SPT-u')
 });
 
 // GET /todos/:id
