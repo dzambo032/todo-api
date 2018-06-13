@@ -1,4 +1,4 @@
-const expect = require('expect');
+/* const expect = require('expect');
 const request = require('supertest');
 const { ObjectID } = require('mongodb');
 
@@ -134,4 +134,4 @@ describe('DELETE /todos/:id', () => {
     it('should clear completedAt when todo is not completed', (done) => {
 
     })
-}) */
+}) */ 
