@@ -89,6 +89,10 @@ app.patch('/todos/:id', (req, res) => {
     })
 });
 
+app.post('/users', (req, res) => {
+    res.json('Nikola');
+});
+
 app.listen(port, () => {
     console.log(`Started up at port ${port}`);
 });
