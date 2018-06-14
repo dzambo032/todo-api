@@ -28,12 +28,11 @@ app.post('/todos', (req, res) => {
 
 // GET ROUTE
 app.get('/todos', (req, res) => {
-    /* Todo.find().then((todos) => {
+    Todo.find().then((todos) => {
         res.send({ todos })            // bolje poslati objekat nego niz, jer mozemo da dodamo neke nove propertye koji su nam potrebani
     }, (e) => {
         res.status(400).send(e);
-    }) */
-    res.send('Srecno na SPT-u')
+    })
 });
 
 // GET /todos/:id
@@ -90,7 +89,16 @@ app.patch('/todos/:id', (req, res) => {
 });
 
 app.post('/users', (req, res) => {
-    res.json('Nikola');
+    var body = _.pick(req.body, ['email', 'password']);
+    var user = new User({
+        email: body.email,
+        password: body.password
+    })
+    user.save().then((doc) => {
+        res.send(doc);
+    }, (e) => {
+        res.status(400).send(e);
+    });
 });
 
 app.listen(port, () => {
